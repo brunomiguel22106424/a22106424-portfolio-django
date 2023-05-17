@@ -1,0 +1,10 @@
+div{
+    display:flex;
+    justify-content: space-between;
+}
+
+footer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

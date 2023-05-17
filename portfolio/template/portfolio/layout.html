@@ -1,0 +1,31 @@
+<!-- base.html -->
+...
+<html lang="pt">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+</head>
+<body>
+    <style>
+
+    </style>
+    <header>
+        <div>Bruno Miguel</div>
+        <nav>
+            <a href="">home</a>
+            <a href="">products</a>
+            <a href="">about</a>
+            <a href="">contact</a>
+        </nav>
+    </header>
+	<main>
+        {% block main %}
+        {% endblock main %}
+    </main>
+    <footer>
+        <div>
+            Universidade Lusófona 2023
+        </div>
+    </footer>
+</body>
+</html>
