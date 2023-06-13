@@ -1,0 +1,151 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block firstcontent %}
+    <div class="first-content" id="homee">
+        <div id="home" class="container1">
+            <div class="texto-container1">
+                <p>
+                    Não é falta de café,
+                    <span class="color-text-spam">nem tequila.</span><br>
+                    É o meu código, <span class="color-text-spam2">que não compila.</span>
+                </p>
+            </div>
+            <div class="botao-container1">
+                <button><a href="#contactme">Contacto</a></button>
+            </div>
+            <div class="foto-container1">
+                <img src="{% static 'portfolio/images/memoji.png' %}" alt="memoji">
+            </div>
+        </div>
+    </div>
+{% endblock firstcontent %}
+{% block secondcontent %}
+    <div id="aboutme" class="second-content">
+        <div class="mainSecond-content">
+            <div class="about-me-content">
+                <div class="about-me-photo">
+                    <h1 id="titlesobremim"> Sobre mim</h1>
+                    <img src="{% static 'portfolio/images/memoji2.png' %}" alt="memoji">
+                </div>
+            </div>
+            <section class="about-me-content-text">
+                <article class="about-me-content-textabs">
+                    Olá, eu sou o Bruno! <br>
+                    Eu tenho 19 anos e sou de Licenciatura de Engenharia Informática.
+                    Desde pequeno que tive interesse pela Informática por influência do meu pai e soube desde aí que no futuro eu queria seguir
+                    algo relacionado à área de informática e à Tecnologia. <br>
+                    Por muito que goste de informática, eu também partilho outras paixões, sendo uma delas o Escutismo. <br>
+                    Eu sou escuteiro desde os 12 anos e desde ai que me apaixonei pelo Escutismo em si e tudo o que me proporcionou na minha vida. <br>
+                    Eu sou um rapaz de cidade, extrovertido e animado mas, também gosto de estar na natureza e ter momentos calmos e relaxantes. <br>
+                    Eu amo tudo o que esteja relacionado ao Terror, Sobrenatural e um pouco de Psicologia.
+                </article>
+            </section>
+        </div>
+    </div>
+{% endblock %}
+
+{% block projetos %}
+    <div class="grid-content" id="projetos">
+        <div class="grid-content-heading">
+            <h1>Projetos</h1>
+        </div>
+        <section>
+            <ul class="grid-wrapper">
+                {% for projeto in projetos %}
+                    <li class="container">
+                        <img src="static/portfolio/{{ projeto.imagem }}" alt={{ projeto.titulo }}>
+                        <div class="overlay">
+                            <div class="text">
+                                <p>{{ projeto.titulo }}</p> {{ projeto.descricao }}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+{% endblock %}
+
+{% block skills %}
+<div id="skill" class="skill-content">
+        <div class="mainSkill-content">
+            <h1 style="text-align: center; color: whitesmoke">Skills</h1>
+            <div class="skill_language">
+                <div class="title_language">Kotlin</div>
+                <div id="barra_aprendizagem_kotlin"></div>
+                <div class="percentagem_languageKotlin">75%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">Java</div>
+                <div id="barra_aprendizagem_java"></div>
+                <div class="percentagem_languageJava">75%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">C</div>
+                <div id="barra_aprendizagem_C"></div>
+                <div class="percentagem_languageC">75%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">HTML</div>
+                <div id="barra_aprendizagem_HTML"></div>
+                <div class="percentagem_languageHTML">90%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">CSS</div>
+                <div id="barra_aprendizagem_CSS"></div>
+                <div class="percentagem_languageCSS">85%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">JavaScript</div>
+                <div id="barra_aprendizagem_JV"></div>
+                <div class="percentagem_languageJV">80%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">Python</div>
+                <div id="barra_aprendizagem_PY"></div>
+                <div class="percentagem_languagePY">80%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">PHP</div>
+                <div id="barra_aprendizagem_PHP"></div>
+                <div class="percentagem_languagePHP">65%</div>
+            </div>
+            <div class="skill_language">
+                <div class="title_language">C#</div>
+                <div id="barra_aprendizagemCS"></div>
+                <div class="percentagem_languageCS">65%</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block terceiracontent %}
+    <div class="terceira-content" id="contactme">
+        <div class="terceira-contentpt2"></div>
+            <section class="contact-me" id="contact-section">
+                <form id="contact" action="" method="post">
+                    <div class="section-heading">
+                        <h2>Contacto</h2>
+                    </div>
+                    <div class="inputField">
+                        <input type="name" name="nome" id="nome" placeholder="Nome" autocomplete="on" required>
+                    </div>
+                    <div class="inputField">
+                        <input type="Email" name="email" id="email" placeholder="Email" required="" />
+                    </div>
+
+                    <div class="inputField">
+                        <textarea name="mensagem" id="mensagem" placeholder="Mensagem"></textarea>
+                    </div>
+                    <div class="inputField botao">
+                        <button type="submit" id="form-submit" disabled>Enviar</button>
+                    </div>
+                </form>
+            </section>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4399.946034786734!2d-9.15446957816823!3d38.758389919178875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1932fc16a21773%3A0xbb910a0db57ce114!2sUniversidade%20Lus%C3%B3fona%20-%20Centro%20Universit%C3%A1rio%20Lisboa!5e0!3m2!1spt-PT!2spt!4v1681226101406!5m2!1spt-PT!2spt"
+        style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" class="map">
+        </iframe>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block calculadora %}
+    <div class="first-content-c">
+        <div id="calculator">
+            <input type="text" class="display" disabled />
+            <br>
+            <button id="ac" class="operador">AC</button>
+            <button id="de" class="operador">DE</button>
+            <button id="/" class="barra operador">/</button>
+            <br>
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="*" class="operador">*</button>
+            <br>
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="-" class="operador">-</button>
+            <br>
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="+" class="operador">+</button>
+            <br>
+            <button id="0" class="zero">0</button>
+            <button id="=" class="igual operador">=</button>
+            <br>
+        </div>
+    </div>
+{% endblock %}
+
+{% block playgroundpt2 %}
+    <div class="second-content-c">
+        <div class="img-content">
+            <div class="opiniao" id="opiniao">
+                <p></p>
+            </div>
+            <img src="{% static 'portfolio/images/livro.png' %}" alt="livro" id="foto">
+            <form>
+                <input type="text" class="input_opiniao" id="opiniao_user" placeholder="Escreva uma frase que a imagem o tenha inspirado" autofocus>
+                <input type="text" class="input_nome" id="nome" placeholder="Escreva o seu nome" autofocus>
+                <input type="submit" class="submit" id="submit">
+            </form>
+            <div class="nome1" id="nome1">
+                <p></p>
+            </div>
+            <div class="nome2" id="nome2">
+                <p></p>
+            </div>
+            <div class="nome3" id="nome3">
+                <p></p>
+            </div>
+            <div class="datatoday">
+                <p></p>
+            </div> 
+        </div>
+    </div>
+{% endblock %}
