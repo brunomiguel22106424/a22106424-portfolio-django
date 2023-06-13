@@ -1,17 +1,35 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-    <h1>Comentários do Artigo {{ artigos.titulo }}</h1>
-    {% for comentario in comentarios %}
-        <li>Autor: {{ comentario.autor }}<br>
-            Comentário: {{ comentario.texto }} <br>
-            Likes: {{ comentario.likes }}
-            <form action="{% url 'portfolio:dar_like_comentario' comentario.id %}" method="post" class="d-inline">
-            {% csrf_token %}
-                <button type="submit" class="btn btn-primary btn-sm">Like</button>
-            </form>
-        </li><br>
-        {% empty %}
-            <li>Não há comentários.</li>
-    {% endfor %}
-{% endblock %}
+    <div class="blog">
+        <div class="comentarios">
+            <div class="titleComentariosArtigo">
+                <h1>Comentários do Artigo: {{ artigos.titulo }}</h1>
+            </div>
+            <br><br>
+            <table id="comentarios">
+                <tr>
+                    <th>Autor:</th>
+                    <th>Comentário:</th>
+                    <th>Nr de Likes:</th>
+                    <th>Botão de Like</th>
+                </tr>
+            {% for comentario in comentarios %}
+                <tr>
+                    <td>{{ comentario.autor }}</td>
+                    <td>{{ comentario.texto }}</td>
+                    <td>{{ comentario.likes }}</td>
+                    <td>
+                        <form action="{% url 'portfolio:dar_like_comentario' comentario.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" id="bttLikeComentario">Like</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                    <li>Não há comentários.</li>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock main %}

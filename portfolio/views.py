@@ -1,19 +1,48 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 
 from .forms import *
 from .models import *
 
-
-# Create your views here.
-
-
 def home_page_view(request):
     return render(request, 'portfolio/home.html')
 
+def index_view(request):
+    context = {'projetos': Projeto.objects.all()}
+    return render(request, 'portfolio/index.html', context)
+
+
+def login_view_autenticacao(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request,
+                            username=username,
+                            password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse('portfolio:blog'))
+
+        else:
+            return render(request, 'portfolio/login.html', {
+                'message': "erro"
+            })
+
+    return render(request, 'portfolio/login.html')
+
+
+def playground_view(request):
+    return render(request, 'portfolio/playground.html')
+
 
 def blog_page_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
     context = {'artigos': Artigo.objects.all(),
                'autores': Autor.objects.all(),
                'comentarios': Comentario.objects.all()}
@@ -49,6 +78,9 @@ def novo_comentario_view(request):
 
 
 def edita_artigo_view(request, artigo_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('portfolio:login'))
+
     artigo = get_object_or_404(Artigo, pk=artigo_id)
 
     if request.method == 'POST':

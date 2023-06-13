@@ -2,23 +2,168 @@
 <html lang="pt">
 <head>
     {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/style_pequeno.css' %}">
+    <script src="{% static 'portfolio/js/scripts.js' %}" defer></script>
+    <script src="{% static 'portfolio/js/scriptPlayground.js' %}"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'portfolio/images/portfolio.ico' %}">
 </head>
 <body>
-    <header>
-        <div>Bruno Miguel</div>
+    <header class="header">
         <nav>
-            <a href="{% url 'portfolio:portfoliopt1' %}">Portfolio</a>
+            <input id="responsive-menu" type="checkbox">
+            <label for="responsive-menu" id="checkmenu">
+                <span id="menu-icon"></span>
+            </label>
+
+            <button class="button-darkmode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+                    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="-5 0 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+                </svg>
+                <div class='ball'></div>
+            </button>
+
+            <span class="title">
+                <span class="animate-charcter">B</span>runo <span class="animate-charcter2">M</span>iguel
+            </span>
+
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn">&times;</a>
+                    <div class="overlay-content">
+                    <ul id="links">
+                        <li><a href="{% url 'portfolio:index' %}" class="hover-underline">Inicio</a></li>
+                        <li><a href="#aboutme" class="hover-underline2" >Sobre mim</a></li>
+                        <li><a href="#projetos" class="hover-underline3" >Projetos</a></li>
+                        <li><a href="#contactme" class="hover-underline4" >Contacto</a></li>
+                        <li><a href="playground.html" class="hover-underline">PlayGround</a></li>
+                        <li><a href="{% url 'portfolio:blog' %}"  class="hover-underline">Blog</a></li>
+                    </ul>
+                    <ul id="social-media">
+                        <li>
+                            <a href="https://github.com/brunomiguel22106424">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-github" viewBox="-5 -5 25 25">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/bruno-miguel-985771233/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-linkedin" viewBox="-5 -5 25 25">
+                                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                            </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
-	<main>
+    <div>
+        {% block firstcontent %}
+        {% endblock firstcontent %}
+    </div>
+    <div>
+        {% block secondcontent %}
+        {% endblock secondcontent %}
+    </div>
+	<div>
         {% block main %}
         {% endblock main %}
-    </main>
-    <footer>
-        <div>
-            Universidade Lusófona 2023
+    </div>
+	<div>
+        {% block projetos %}
+        {% endblock projetos %}
+    </div>
+    <div>
+        {% block skills %}
+        {% endblock skills %}
+    </div>
+    <div>
+        {% block terceiracontent %}
+        {% endblock terceiracontent %}
+    </div>
+    <div>
+        {% block calculadora %}
+        {% endblock calculadora %}
+    </div>
+    <div>
+        {% block playgroundpt2 %}
+        {% endblock playgroundpt2 %}
+    </div>
+    <div>
+        {% block login %}
+        {% endblock login %}
+    </div>
+    <div class="footer">
+        <div class="footer1 info1">
+            <h1>Portfolio</h1>
+            <div id="linha"></div>
+            <div class="acessos">
+                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %} ">Inicio</a></div>
+                <span class="barra-separacao">|</span>
+
+                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %}">Sobre mim</a></div>
+                <span class="barra-separacao">|</span>
+
+                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %}">Projetos</a></div>
+                <span class="barra-separacao">|</span>
+
+                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %}">Contacto</a></div>
+                <span class="barra-separacao">|</span>
+
+                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %}">Blog</a></div>
+            </div>
+            <div class="footer-socialmedia">
+                <a href="https://github.com/brunomiguel22106424">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-github" viewBox="-5 -5 25 25">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/bruno-miguel-985771233/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-linkedin" viewBox="-5 -5 25 25">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                <p>Bruno Miguel Soares - Copyright © 2023</p>
+            </div>
         </div>
-    </footer>
+        <div class="footer2">
+            <div id="localidade">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
+                </svg>
+                <h2>Localização</h2>
+                <p>Campo Grande 376, 1749-024 Lisboa</p>
+            </div>
+            <div id="telemovel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+                </svg>
+                <h2>Telemóvel</h2>
+                <p>+351 999 999 999</p>
+            </div>
+            <div id="email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                    <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"></path>
+                </svg>
+                <h2>Email</h2>
+                <p>brunomiguel.bcs@gmail.com</p>
+            </div>
+            <div id="linhafooter2"></div>
+        </div>
+        <div class="footer3">
+            <p>Universidade Lusófona - Centro Universitário Lisboa</p>
+            <img src="{% static 'portfolio/images/lusofonalogo.png' %}" alt="Logotipo da Lusófona">
+        </div>
+    </div>
 </body>
 </html>

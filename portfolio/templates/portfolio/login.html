@@ -1,0 +1,14 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block login %}
+    <div class="login_content">
+        <form class="form-login" method="post" action="{% url 'portfolio:login' %}">
+            {% csrf_token %}
+            <label for="username">User</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <button type="submit" class="btn-gravar">Submit</button>
+        </form>
+    </div>
+{% endblock login %}

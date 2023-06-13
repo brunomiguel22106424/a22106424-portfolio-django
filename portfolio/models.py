@@ -15,7 +15,7 @@ class Autor(models.Model):
 
 
 class BlogOwner(models.Model):
-    nome = models.CharField(max_length=100,null=False)
+    nome = models.CharField(max_length=100, null=False)
     repogit = models.CharField(max_length=1000, null=False)
     python = models.CharField(max_length=250, null=False)
 
@@ -61,9 +61,11 @@ class Comentario(models.Model):
         return f'{self.autor}: {self.texto}: {self.likes}'
 
 
-class Like(models.Model):
-    numero = models.IntegerField(default=0)
-    comentario = models.OneToOneField(Comentario, on_delete=models.CASCADE, related_name="like_comentario")
+class Projeto(models.Model):
+    titulo = models.CharField(max_length=250, null=False)
+    descricao = models.CharField(max_length=250, null=False)
+    imagem = models.ImageField(upload_to='images/', null=True, blank=True)
+    cadeira = models.CharField(max_length=250, null=False)
 
     def __str__(self) -> str:
-        return f'{self.comentario}: {self.numero}'
+        return f'{self.titulo}: {self.descricao}: {self.cadeira}'

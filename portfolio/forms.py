@@ -12,7 +12,6 @@ class AutorForm(ModelForm):
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'adicionar nome...'}),
             'apelido': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'adicionar apelido...'}),
             'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'adicionar email...'}),
-
         }
 
         labels = {
@@ -20,11 +19,6 @@ class AutorForm(ModelForm):
             'apelido': 'apelido',
             'email': 'email',
             'verified': 'verified',
-        }
-
-        # o dicionário help_texts contém, para um atributo, um texto auxiliar a apresentar por baixo da janela de inserção
-        help_texts = {
-            'prioridade': 'prioridade: baixa=1, media=2, alta=3',
         }
 
 
@@ -48,11 +42,6 @@ class ArtigoForm(ModelForm):
             'autor': 'autor',
         }
 
-        # o dicionário help_texts contém, para um atributo, um texto auxiliar a apresentar por baixo da janela de inserção
-        help_texts = {
-            'prioridade': 'prioridade: baixa=1, media=2, alta=3',
-        }
-
 
 class ComentarioForm(ModelForm):
     class Meta:
@@ -62,7 +51,7 @@ class ComentarioForm(ModelForm):
         widgets = {
             'texto': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'adicionar comentário...'}),
             'link': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'adicionar link...'}),
-            'likes': forms.NumberInput(attrs={'class': 'form-control', 'min': 0}),
+            'likes': forms.NumberInput(attrs={'disabled': 'True'}),
         }
 
         labels = {
@@ -70,9 +59,4 @@ class ComentarioForm(ModelForm):
             'texto': 'texto',
             'likes': 'likes',
             'artigo': 'artigo',
-        }
-
-        # o dicionário help_texts contém, para um atributo, um texto auxiliar a apresentar por baixo da janela de inserção
-        help_texts = {
-            'prioridade': 'prioridade: baixa=1, media=2, alta=3',
         }

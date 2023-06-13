@@ -1,31 +1,50 @@
 {% extends 'portfolio/layout.html' %}
 
 {% block main %}
-    <h1>Autores</h1>
-    {% for autor in autores %}
-        <p>
-           {{ autor.nome }} {{ autor.apelido }}
-        </p>
-        {% empty %}
-            <li>Não há Autores.</li>
-   {% endfor %}
-        <a href="{% url 'portfolio:novoAutor' %}" class="btn btn-success btn-block">+ Novo Autor</a>
-    <br><br>
+    <div class="blog">
+        <div class="autores">
+            <h1>Autores</h1>
+            <table id="autores">
+            {% for autor in autores %}
+                <tr>
+                    <td>
+                        {{ autor.nome }} {{ autor.apelido }}
+                        {% empty %}
+                        Não há Autores.
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+            <a href="{% url 'portfolio:novoAutor' %}" class="btn btn-success btn-block">Novo Autor</a>
+        </div>
 
-    <h1>Artigos</h1>
-    <ul>
-    {% for artigo in artigos %}
-        <li>Titulo: {{ artigo.titulo }}<br>
-            Conteúdo: {{ artigo.conteudo }}<br>
-            Área: {{ artigo.area }}
-            <br>
-            <a href="{% url 'portfolio:edita' artigo.id %}" class="btn btn-warning">Editar</a>
-            <a href="{% url 'portfolio:comentarios' artigo.id %}" class="btn btn-success btn-block">Ver Comentários</a>
-        </li><br>
-        {% empty %}
-            <li>Não há Artigos.</li>
-    {% endfor %}
-    <a href="{% url 'portfolio:novoComentario' %}" class="btn btn-warning">Novo Comentário</a>
-    <a href="{% url 'portfolio:novoArtigo' %}" class="btn btn-success btn-block">Novo Artigo</a>
-    </ul>
-{% endblock %}
+        <div class="artigos">
+            <h1>Artigos</h1>
+            {% for artigo in artigos %}
+                <br><br>
+                <table id="artigos">
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Conteúdo</th>
+                        <th>Área</th>
+                        <th>Editar</th>
+                        <th>Ver Comentários</th>
+                    </tr>
+                    <tr>
+                        <td>{{ artigo.titulo }}</td>
+                        <td>{{ artigo.conteudo }}</td>
+                        <td>{{ artigo.area }}</td>
+                        <td><a href="{% url 'portfolio:edita' artigo.id %}" class="btn btn-warning">Editar</a></td>
+                        <td><a href="{% url 'portfolio:comentarios' artigo.id %}" class="btn btn-success btn-block">Ver Comentários</a></td>
+                    </tr>
+                </table>
+                <br><br><br><br><br>
+            {% empty %}
+                <li>Não há Artigos.</li>
+            {% endfor %}
+            <a href="{% url 'portfolio:novoComentario' %}" class="btn btn-warning" id="C">Novo Comentário</a>
+            <a href="{% url 'portfolio:novoArtigo' %}" class="btn btn-success btn-block" id="A">Novo Artigo</a>
+        </div>
+    </div>
+{% endblock main %}
+
