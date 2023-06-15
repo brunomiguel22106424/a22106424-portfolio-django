@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })
 
+/*
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector(".button-darkmode2").onclick = function () {
         var botao = document.querySelector(".button-darkmode2");
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     };
 })
+*/
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('form').onsubmit = function () {
