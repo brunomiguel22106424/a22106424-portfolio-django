@@ -18,4 +18,5 @@ urlpatterns = [
     path('comentarios/<int:comentario_id>/like/', views.dar_like_comentario_view, name='dar_like_comentario'),
     path('playground.html', views.playground_view, name='playground'),
     path('login', views.login_view_autenticacao, name='login'),
+    path('video', views.video_view, name='video'),
 ]

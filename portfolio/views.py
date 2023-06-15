@@ -6,8 +6,10 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import *
 from .models import *
 
+
 def home_page_view(request):
     return render(request, 'portfolio/home.html')
+
 
 def index_view(request):
     context = {'projetos': Projeto.objects.all()}
@@ -123,3 +125,7 @@ def dar_like_comentario_view(request, comentario_id):
 
     # redirecionar para a página de detalhes do artigo ou para onde você desejar
     return redirect('portfolio:comentarios', artigo_id=comentario.artigo.id)
+
+
+def video_view(request):
+    return render(request, 'portfolio/video.html')
