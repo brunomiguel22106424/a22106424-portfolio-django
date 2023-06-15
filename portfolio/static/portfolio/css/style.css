@@ -1768,3 +1768,23 @@ button:active{
     margin-left: 4vw;
 }
 
+.dark-mode-header{
+    background-color: #1a1919;
+}
+
+.dark-mode-first-content{
+    background-image: linear-gradient(176deg,#1a1919 80%, #9c9b9b calc(80% + 2px));
+}
+
+.dark-mode-second-content{
+    background-color: #1a1919;
+}
+
+.dark-mode-grid-content{
+    background-color: #1a1919;
+}
+
+.dark-mode-skill-content{
+    background-color: #1a1919;
+}
+

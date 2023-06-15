@@ -6,7 +6,7 @@ from . import views
 app_name = "portfolio"
 
 urlpatterns = [
-    path('', views.index_view, name='index'),
+    path('index', views.index_view, name='index'),
     path('home', views.home_page_view, name='home'),
     path('blog', views.blog_page_view, name='blog'),
     path('novoAutor', views.novo_autor_view, name='novoAutor'),

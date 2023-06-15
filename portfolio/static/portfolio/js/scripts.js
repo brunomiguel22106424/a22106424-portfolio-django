@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const first_content = document.querySelector(".first-content");
         first_content.classList.toggle("dark-mode-first-content");
 
-        const second_content = document.querySelector("main");
-        second_content.classList.toggle("dark-mode-second-content");
+        const sobremim = document.querySelector(".mainSecond-content");
+        sobremim.classList.toggle("dark-mode-second-content");
 
         const terceira_content = document.querySelector(".terceira-content");
         terceira_content.classList.toggle("dark-mode-terceira-content");
@@ -67,16 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const grid_content = document.querySelector(".grid-content");
         grid_content.classList.toggle("dark-mode-grid-content");
 
+        const skills = document.querySelector(".mainSkill-content");
+        skills.classList.toggle("dark-mode-skill-content");
+
         const footer = document.querySelector(".footer");
         footer.classList.toggle("dark-mode-footer");
 
         const map = document.querySelector(".map");
         map.classList.toggle("map-dark-mode");
 
-        /*
-            const terceira_content2 = document.querySelector(".terceira-contentpt2");
-            terceira_content2.classList.toggle("dark-mode-terceira-contentpt2");
-        */
     };
 })
 

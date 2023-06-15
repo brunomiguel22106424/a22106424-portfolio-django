@@ -39,10 +39,10 @@
                     <div class="overlay-content">
                     <ul id="links">
                         <li><a href="{% url 'portfolio:index' %}" class="hover-underline">Inicio</a></li>
-                        <li><a href="#aboutme" class="hover-underline2" >Sobre mim</a></li>
-                        <li><a href="#projetos" class="hover-underline3" >Projetos</a></li>
-                        <li><a href="#contactme" class="hover-underline4" >Contacto</a></li>
-                        <li><a href="playground.html" class="hover-underline">PlayGround</a></li>
+                        <li><a href="{% url 'portfolio:index' %}" class="hover-underline2" >Sobre mim</a></li>
+                        <li><a href="{% url 'portfolio:index' %}" class="hover-underline3" >Projetos</a></li>
+                        <li><a href="{% url 'portfolio:index' %}" class="hover-underline4" >Contacto</a></li>
+                        <li><a href="{% url 'portfolio:playground' %}" class="hover-underline">PlayGround</a></li>
                         <li><a href="{% url 'portfolio:blog' %}"  class="hover-underline">Blog</a></li>
                     </ul>
                     <ul id="social-media">
@@ -118,7 +118,7 @@
                 <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %}">Contacto</a></div>
                 <span class="barra-separacao">|</span>
 
-                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:index' %}">Blog</a></div>
+                <div class="acesso1" id="hover-underline"><a href="{% url 'portfolio:blog' %}">Blog</a></div>
             </div>
             <div class="footer-socialmedia">
                 <a href="https://github.com/brunomiguel22106424">
